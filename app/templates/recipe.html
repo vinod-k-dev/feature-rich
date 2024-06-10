@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ recipe.title }}</h1>
+<p>{{ recipe.description }}</p>
+<h3>Ingredients</h3>
+<p>{{ recipe.ingredients }}</p>
+<h3>Instructions</h3>
+<p>{{ recipe.instructions }}</p>
+{% if current_user.is_authenticated and recipe.author == current_user %}
+    <a href="{{ url_for('recipes.edit_recipe', recipe_id=recipe.id) }}">Edit</a>
+    <form action="{{ url_for('recipes.delete_recipe', recipe_id=recipe.id) }}" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+    </form>
+{% endif %}
+{% endblock %}
