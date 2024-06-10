@@ -1,35 +1,68 @@
+/* static/css/style.css */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
 }
 
-nav {
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #333;
-    color: white;
     padding: 10px;
+    color: white;
 }
 
-nav a {
+.nav-left a {
     color: white;
-    margin: 0 10px;
     text-decoration: none;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+.nav-left a:hover {
+    background-color: #575757;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="text"] {
+    padding: 6px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    margin-right: -4px;
+}
+
+.search-form button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #575757;
+    color: white;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #444;
 }
 
 .container {
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-}
-
-.recipe {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-
-.pagination a {
-    margin: 0 5px;
-    text-decoration: none;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .flashes {
@@ -38,13 +71,91 @@ nav a {
 }
 
 .flashes li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.flashes .message {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flashes .error {
     background-color: #f8d7da;
     color: #721c24;
-    margin-bottom: 10px;
+}
+
+/* Style for the recipe form */
+.recipe-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.recipe-form input[type="text"],
+.recipe-form textarea {
     padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.recipe-form input[type="text"]:focus,
+.recipe-form textarea:focus {
+    border-color: #333;
+}
+
+.recipe-form textarea {
+    resize: vertical;
+}
+
+.recipe-form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.recipe-form button:hover {
+    background-color: #575757;
 }
 
 
-h1 {
-    color: #333;
+/* Add this to your style.css file */
+
+.recipe-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
+
+.recipe-table th,
+.recipe-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.recipe-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.recipe-table td {
+    text-align: left;
+}
+
+.recipe-table tr:hover {
+    background-color: #f2f2f2;
+}
+

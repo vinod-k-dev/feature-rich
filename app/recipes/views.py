@@ -51,14 +51,29 @@ def edit_recipe(recipe_id):
         form.description.data = recipe.description
         form.ingredients.data = recipe.ingredients
         form.instructions.data = recipe.instructions
-    return render_template('create_recipe.html', form=form, legend='Update Recipe')
+    return render_template('edit_recipe.html', form=form, legend='Update Recipe')
 
 @bp.route('/recipe/<int:recipe_id>/delete', methods=['POST'])
 @login_required
 def delete_recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
     if recipe.author != current_user:
-        return redirect(url_for('index'))
+        return redirect(url_for('recipes.index'))
     db.session.delete(recipe)
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('recipes.index'))
+
+@bp.route('/search')
+@login_required
+def search():
+    query = request.args.get('query')
+    if not query:
+        return redirect(url_for('recipes.index'))
+    page = request.args.get('page', 1, type=int)
+    search = f"%{query}%"
+    recipes = Recipe.query.filter(
+        Recipe.title.ilike(search) | Recipe.ingredients.ilike(search)
+    ).paginate(page=page, per_page=10)
+    next_url = url_for('recipes.search', query=query, page=recipes.next_num) if recipes.has_next else None
+    prev_url = url_for('recipes.search', query=query, page=recipes.prev_num) if recipes.has_prev else None
+    return render_template('index.html', title='Search Results', recipes=recipes.items, next_url=next_url, prev_url=prev_url)

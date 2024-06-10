@@ -25,6 +25,11 @@ def create_app(config_class=None):
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
     from app.recipes import bp as recipes_bp
-    app.register_blueprint(recipes_bp, url_prefix='/recipe')
+    app.register_blueprint(recipes_bp, url_prefix='/recipes')
+
+    from app.recipes.forms import SearchForm
+    @app.context_processor
+    def inject_search_form():
+        return dict(search_form=SearchForm())
 
     return app

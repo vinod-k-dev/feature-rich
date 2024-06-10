@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>{{ title }}</h2>
-  <form method="post">
-      {{ form.hidden_tag() }}
-      <p>
-          {{ form.title.label }}<br>
-          {{ form.title(size=64) }}<br>
-      </p>
-      <p>
-          {{ form.description.label }}<br>
-          {{ form.description(rows=5, cols=40) }}<br>
-      </p>
-      <p>
-          {{ form.ingredients.label }}<br>
-          {{ form.ingredients(rows=5, cols=40) }}<br>
-      </p>
-      <p>
-          {{ form.instructions.label }}<br>
-          {{ form.instructions(rows=5, cols=40) }}<br>
-      </p>
-      <p>{{ form.submit() }}</p>
-  </form>
+<div class="container">
+    <h2>{{ title }}</h2>
+    <form class="recipe-form" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            <label for="title">{{ form.title.label }}</label><br>
+            {{ form.title(size=64) }}<br>
+        </p>
+        <p>
+            <label for="description">{{ form.description.label }}</label><br>
+            {{ form.description(rows=5, cols=40) }}<br>
+        </p>
+        <p>
+            <label for="ingredients">{{ form.ingredients.label }}</label><br>
+            {{ form.ingredients(rows=5, cols=40) }}<br>
+        </p>
+        <p>
+            <label for="instructions">{{ form.instructions.label }}</label><br>
+            {{ form.instructions(rows=5, cols=40) }}<br>
+        </p>
+        <p><button type="submit">{{ form.submit() }}</button></p>
+    </form>
+</div>
 {% endblock %}
