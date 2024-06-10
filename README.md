@@ -32,8 +32,8 @@ This project is a feature-rich web application built using Python and Flask that
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/flask-recipe-manager.git
-    cd flask-recipe-manager
+    git clone https://github.com/vinod-k-dev/feature-rich.git
+    cd feature-rich
     ```
 
 2. **Create a virtual environment and activate it:**
